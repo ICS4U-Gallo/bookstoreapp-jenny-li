@@ -1,5 +1,8 @@
 @(bookForm : Form[Book])
 
+@import helper.CSRF;
+
+
 <html>
     <head>
         <title>Create Book</title>
@@ -7,7 +10,7 @@
     <body>
         <h1>Create Book</h1>
 
-       @helper.form(action = routes.BooksController.save()) {
+       @helper.form(action = helper.CSRF((routes.BooksController.save()))) {
            @helper.inputText(bookForm("id"))
            @helper.inputText(bookForm("title"))
            @helper.inputText(bookForm("price"))
